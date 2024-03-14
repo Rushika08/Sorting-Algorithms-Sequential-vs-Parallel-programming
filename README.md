@@ -14,7 +14,7 @@ To run the program, execute the Python script main.py. The program will output t
 
 ## Requirements
 
-Python 3.x
+Python 3,
 multiprocessing module (built-in)
 
 ## Implementation Details
