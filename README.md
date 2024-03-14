@@ -1,4 +1,4 @@
-# Sorting-Algorithms-Sequential-vs-Parallel-programming
+# Sorting Algorithms in Sequential vs Parallel programming
 
 This Python program demonstrates sequential and parallel implementations of two popular sorting algorithms: Merge Sort and Quick Sort. It compares the performance of these algorithms in both sequential and parallel manners.
 
