@@ -13,30 +13,31 @@ def merge_sort(arr):
         return arr
 
     mid = len(arr) // 2
-    left_half = arr[:mid]
-    right_half = arr[mid:]
+    left = arr[:mid]
+    right = arr[mid:]
 
-    left_half = merge_sort(left_half)
-    right_half = merge_sort(right_half)
+    left = merge_sort(left)
+    right = merge_sort(right)
 
-    return merge(left_half, right_half)
+    return merge(left, right)
 
 def merge(left, right):
-    result = []
-    i = j = 0
+    merged = []
+    left_index = 0
+    right_index = 0
 
-    while i < len(left) and j < len(right):
-        if left[i] < right[j]:
-            result.append(left[i])
-            i += 1
+    while left_index < len(left) and right_index < len(right):
+        if left[left_index] <= right[right_index]:
+            merged.append(left[left_index])
+            left_index += 1
         else:
-            result.append(right[j])
-            j += 1
+            merged.append(right[right_index])
+            right_index += 1
 
-    result.extend(left[i:])
-    result.extend(right[j:])
-    return result
+    merged += left[left_index:]
+    merged += right[right_index:]
 
+    return merged
 
 
 # ----------------------------------------------------------------------------------------
@@ -63,7 +64,7 @@ def quick_sort(arr):
 # ----------------------------------------------------------------------------------------
 # Merge Sort Parallel manner
 
-def parallel_merge_sort(arr, processes=2):
+def parallel_merge_sort(arr):
     if len(arr) <= 1:
         return arr
 
@@ -71,18 +72,11 @@ def parallel_merge_sort(arr, processes=2):
     left = arr[:mid]
     right = arr[mid:]
 
-    if __name__ == '__main__':
-        with multiprocessing.Pool(processes=processes) as pool:
-            # Use apply_async for non-blocking execution
-            left_result = pool.apply_async(parallel_merge_sort, args=(left, processes // 2))
-            right_result = pool.apply_async(parallel_merge_sort, args=(right, processes // 2))
-
-            # Retrieve the results
-            left = left_result.get()
-            right = right_result.get()
+    with multiprocessing.Pool() as pool:
+        left = pool.apply(merge_sort, (left,))
+        right = pool.apply(merge_sort, (right,))
 
     return merge(left, right)
-
 
 
 # ----------------------------------------------------------------------------------------
@@ -97,7 +91,7 @@ def parallel_quick_sort(arr, processes=2):
     middle = [x for x in arr if x == pivot]
     right = [x for x in arr if x > pivot]
 
-    if __name__ == '__main__':
+    if processes > 1:
         with multiprocessing.Pool(processes=processes) as pool:
             # Use apply_async for non-blocking execution
             left_result = pool.apply_async(parallel_quick_sort, args=(left, processes // 2))
@@ -107,7 +101,12 @@ def parallel_quick_sort(arr, processes=2):
             left = left_result.get()
             right = right_result.get()
 
+    else:
+        left = parallel_quick_sort(left, processes // 2)
+        right = parallel_quick_sort(right, processes // 2)
+
     return left + middle + right
+
 
 
 # ----------------------------------------------------------------------------------------
