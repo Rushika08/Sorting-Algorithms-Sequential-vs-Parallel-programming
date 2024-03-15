@@ -1,6 +1,6 @@
 # Sorting Algorithms in Sequential vs Parallel programming
 
-This Python program demonstrates sequential and parallel implementations of two popular sorting algorithms: Merge Sort and Quick Sort. It compares the performance of these algorithms in both sequential and parallel manners.
+This repository contains implementations of sequential and parallel sorting algorithms in Python, focusing on Merge Sort and Quick Sort algorithms. The parallel implementations utilize the multiprocessing module to leverage multiple CPU cores for faster sorting of large datasets.
 
 ## Introduction
 
@@ -17,19 +17,19 @@ To run the program, execute the Python script main.py. The program will output t
 Python 3,
 multiprocessing module (built-in)
 
-## Implementation Details
+## Implemented Algorithms
+### Sequential Algorithms
+#### Merge Sort: A divide-and-conquer algorithm that recursively divides the array into halves until each sub-array contains only one element, then merges them back together in sorted order.
 
-### Sequential Merge Sort
-The merge_sort function recursively divides the input array into halves until each sub-array contains only one element. Then, it merges these sorted sub-arrays to produce the final sorted array.
+#### Quick Sort: Another divide-and-conquer algorithm that selects a pivot element and partitions the array into two sub-arrays, one with elements less than the pivot and the other with elements greater than the pivot. It then recursively sorts the sub-arrays.
 
-### Sequential Quick Sort
-The quick_sort function selects a pivot element from the array and partitions the array into three parts: elements less than the pivot, elements equal to the pivot, and elements greater than the pivot. It recursively sorts the sub-arrays to achieve the final sorted array.
+### Parallel Algorithms
+#### Parallel Merge Sort: A parallelized version of Merge Sort that utilizes multiprocessing to split the sorting task across multiple CPU cores, improving performance for large datasets.
 
-### Parallel Merge Sort
-The parallel_merge_sort function is similar to the sequential merge sort but leverages Python's multiprocessing module to perform parallel sorting. It divides the input array into halves and recursively sorts each half in parallel using multiple processes.
-
-### Parallel Quick Sort
-The parallel_quick_sort function follows the same logic as sequential quick sort but utilizes parallel processing for sorting sub-arrays. It divides the input array into smaller sub-arrays and sorts them concurrently using multiple processes.
+#### Parallel Quick Sort: A parallelized version of Quick Sort that also employs multiprocessing for concurrent sorting of sub-arrays.
 
 ### Performance Evaluation
 The program evaluates the performance of each sorting algorithm by measuring the execution time for sorting a large random list of integers. It compares the execution time of sequential and parallel implementations of Merge Sort and Quick Sort.
+
+## Contributing
+Contributions are welcome! If you have any suggestions, bug fixes, or enhancements, feel free to open an issue or create a pull request.
