@@ -19,14 +19,18 @@ multiprocessing module (built-in)
 
 ## Implemented Algorithms
 ### Sequential Algorithms
-#### Merge Sort: A divide-and-conquer algorithm that recursively divides the array into halves until each sub-array contains only one element, then merges them back together in sorted order.
+#### Merge Sort: 
+A divide-and-conquer algorithm that recursively divides the array into halves until each sub-array contains only one element, then merges them back together in sorted order.
 
-#### Quick Sort: Another divide-and-conquer algorithm that selects a pivot element and partitions the array into two sub-arrays, one with elements less than the pivot and the other with elements greater than the pivot. It then recursively sorts the sub-arrays.
+#### Quick Sort: 
+Another divide-and-conquer algorithm selects a pivot element and partitions the array into two sub-arrays, one with elements less than the pivot and the other with elements greater than the pivot. It then recursively sorts the sub-arrays.
 
 ### Parallel Algorithms
-#### Parallel Merge Sort: A parallelized version of Merge Sort that utilizes multiprocessing to split the sorting task across multiple CPU cores, improving performance for large datasets.
+#### Parallel Merge Sort: 
+A parallelized version of Merge Sort that utilizes multiprocessing to split the sorting task across multiple CPU cores, improving performance for large datasets.
 
-#### Parallel Quick Sort: A parallelized version of Quick Sort that also employs multiprocessing for concurrent sorting of sub-arrays.
+#### Parallel Quick Sort: 
+A parallelized version of Quick Sort also employs multiprocessing for concurrent sorting of sub-arrays.
 
 ### Performance Evaluation
 The program evaluates the performance of each sorting algorithm by measuring the execution time for sorting a large random list of integers. It compares the execution time of sequential and parallel implementations of Merge Sort and Quick Sort.
